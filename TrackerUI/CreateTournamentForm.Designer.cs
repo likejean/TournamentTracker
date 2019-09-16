@@ -54,7 +54,7 @@
             this.headerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(145)))), ((int)(((byte)(255)))));
             this.headerLabel.Location = new System.Drawing.Point(45, 50);
             this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(285, 41);
+            this.headerLabel.Size = new System.Drawing.Size(273, 40);
             this.headerLabel.TabIndex = 1;
             this.headerLabel.Text = "Create Tournament";
             // 
@@ -68,7 +68,7 @@
             this.tournamentNameLabel.Size = new System.Drawing.Size(198, 29);
             this.tournamentNameLabel.TabIndex = 11;
             this.tournamentNameLabel.Text = "Tournament Name";
-            this.tournamentNameLabel.Click += new System.EventHandler(this.TeamOneScoreLabel_Click);
+            
             // 
             // tournamentNameValue
             // 
@@ -219,9 +219,9 @@
             this.prizesLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(145)))), ((int)(((byte)(255)))));
             this.prizesLabel.Location = new System.Drawing.Point(425, 277);
             this.prizesLabel.Name = "prizesLabel";
-            this.prizesLabel.Size = new System.Drawing.Size(164, 29);
+            this.prizesLabel.Size = new System.Drawing.Size(68, 29);
             this.prizesLabel.TabIndex = 23;
-            this.prizesLabel.Text = "Teams / Players";
+            this.prizesLabel.Text = "Prizes";
             // 
             // prizesListBox
             // 
