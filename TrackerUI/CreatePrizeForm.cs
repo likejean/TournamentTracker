@@ -13,13 +13,19 @@ using TrackerLibrary.Models;
 
 namespace TrackerUI
 {
-    public partial class CreatePrizeForm : Form
+    public partial class CreatePrizeForm : Form, IPrizeRequester
     {
-        public CreatePrizeForm()
+        IPrizeRequester callingForm;
+        public CreatePrizeForm(IPrizeRequester caller)
         {
             InitializeComponent();
+            callingForm = caller;
         }
 
+        public void PrizeComplete(PrizeModel model)
+        {
+            throw new NotImplementedException();
+        }
 
         private void CreatePrizeButton_Click(object sender, EventArgs e)
         {
@@ -36,13 +42,11 @@ namespace TrackerUI
                 //!!!!Pass the object (instance) into the method 'CreatePrize' 
                 //that was inherited by the 'Connection' Read-Write property from the 'IDataConnection' Interface
 
-                GlobalConfig.Connection.CreatePrize(model);  
-                
+                GlobalConfig.Connection.CreatePrize(model);
+
                 //Initialization of the PrizeForm after user inpunts being submitted
-                placeNameValue.Text = "";
-                placeNumberValue.Text = "";
-                prizeAmountValue.Text = "0";
-                prizePercentageValue.Text = "0";
+                callingForm.PrizeComplete(model);
+                this.Close();
             }
             else
             {
