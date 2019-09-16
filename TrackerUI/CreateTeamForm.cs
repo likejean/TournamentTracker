@@ -42,7 +42,6 @@ namespace TrackerUI
         }
 
 
-
         /// <summary>
         /// CreateMemberButton CLICK Event Handler
         /// </summary>
@@ -59,7 +58,11 @@ namespace TrackerUI
                 p.EmailAddress = emailValue.Text;
                 p.PhoneNumber = phoneNumberValue.Text;
 
-                GlobalConfig.Connection.CreatePerson(p);
+                p= GlobalConfig.Connection.CreatePerson(p);
+
+                selectedTeamMembers.Add(p);
+                WireUpLists();
+
                 firstNameValue.Text = "";
                 lastNameValue.Text = "";
                 emailValue.Text = "";
@@ -81,17 +84,42 @@ namespace TrackerUI
                 || emailValue.Text.Length == 0 
                 || phoneNumberValue.Text.Length == 0
             ) return false;
-           
             return true;
         }
 
         private void AddMemberButton_Click(object sender, EventArgs e)
         {
             PersonModel p = (PersonModel)selectTeamMemberDropDown.SelectedItem;
-            availableTeamMembers.Remove(p);
-            selectedTeamMembers.Add(p);
-            WireUpLists();
+            if (p != null)
+            {
+                availableTeamMembers.Remove(p);
+                selectedTeamMembers.Add(p);
+                WireUpLists(); 
+            }
         }
-        
+
+        private void RemoveSelectedMemberButton_Click(object sender, EventArgs e)
+        {
+            PersonModel p = (PersonModel)teamMembersListBox.SelectedItem;
+            if (p != null)
+            {
+                selectedTeamMembers.Remove(p);
+                availableTeamMembers.Add(p);
+                WireUpLists(); 
+            }
+        }
+
+        private void CreateTeamButton_Click(object sender, EventArgs e)
+        {
+            TeamModel t = new TeamModel
+            {
+                TeamName = teamNameValue.Text,
+                TeamMembers = selectedTeamMembers
+            };
+            GlobalConfig.Connection.CreateTeam(t);
+
+            //TO DO If we aren't closing this form after creation, reset the form
+
+        }
     }
 }
