@@ -196,8 +196,9 @@
             this.deleteSelectedPlayers.Name = "deleteSelectedPlayers";
             this.deleteSelectedPlayers.Size = new System.Drawing.Size(207, 59);
             this.deleteSelectedPlayers.TabIndex = 21;
-            this.deleteSelectedPlayers.Text = "DELETE SELECTED";
+            this.deleteSelectedPlayers.Text = "REMOVE SELECTED";
             this.deleteSelectedPlayers.UseVisualStyleBackColor = true;
+            this.deleteSelectedPlayers.Click += new System.EventHandler(this.DeleteSelectedPlayers_Click);
             // 
             // deleteSelectedPrizeButton
             // 
@@ -211,8 +212,9 @@
             this.deleteSelectedPrizeButton.Name = "deleteSelectedPrizeButton";
             this.deleteSelectedPrizeButton.Size = new System.Drawing.Size(207, 59);
             this.deleteSelectedPrizeButton.TabIndex = 24;
-            this.deleteSelectedPrizeButton.Text = "DELETE SELECTED";
+            this.deleteSelectedPrizeButton.Text = "REMOVE SELECTED";
             this.deleteSelectedPrizeButton.UseVisualStyleBackColor = true;
+            this.deleteSelectedPrizeButton.Click += new System.EventHandler(this.DeleteSelectedPrizeButton_Click);
             // 
             // prizesLabel
             // 
@@ -251,6 +253,7 @@
             this.createTournamentButton.TabIndex = 25;
             this.createTournamentButton.Text = "CREATE TOURNAMENT";
             this.createTournamentButton.UseVisualStyleBackColor = true;
+            this.createTournamentButton.Click += new System.EventHandler(this.CreateTournamentButton_Click);
             // 
             // CreateTournamentForm
             // 

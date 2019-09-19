@@ -14,6 +14,7 @@ namespace TrackerLibrary.DataAccess
         private const string PrizesFile = "PrizeModels.csv";
         private const string PeopleFile = "PersonModels.csv";
         private const string TeamFile = "TeamModel.csv";
+        private const string TournamentFile = "TournamentModels.csv";
 
         //1.****Implement inherited Interface member <CreatePerson>
 
@@ -87,7 +88,24 @@ namespace TrackerLibrary.DataAccess
 
         public List<TeamModel> GetTeam_All()
         {
-            throw new NotImplementedException();
+            return TeamFile.FullFilePath().LoadFile().ConvertToTeamModels(PeopleFile);
+        }
+
+        public void CreateTournament(TourmanentModel model)
+        {
+            List<TourmanentModel> tourmanents = TournamentFile.
+                FullFilePath().
+                LoadFile().
+                ConvertToTournamentModel(TeamFile, PeopleFile, PrizesFile);
+            int currentId = 1;
+            if (tourmanents.Count > 0)
+            {
+                currentId = tourmanents.OrderByDescending(x => x.Id).First().Id + 1;
+            }
+
+            model.Id = currentId;
+            tourmanents.Add(model);
+            tourmanents.SaveToTournamentFile(TournamentFile);
         }
     }
 
